@@ -1,0 +1,12 @@
+<h3><%= l(:label_calendar) %></h3>
+
+<p style="float:right;">
+  <%= link_to_previous_week(@year, @week) %> | <%= link_to_next_week(@year, @week) %>
+</p>
+
+<% calendar = Redmine::Helpers::Calendar.new(Date.commercial(@year.to_i, @week.to_i, 1), current_language, :week)
+   calendar.events = Issue.visible.find :all,
+                     :conditions => ["#{Issue.table_name}.project_id in (#{@user.projects.collect{|m| m.id}.join(',')}) AND ((start_date>=? and start_date<=?) or (due_date>=? and due_date<=?)) and assigned_to_id = ?", calendar.startdt, calendar.enddt, calendar.startdt, calendar.enddt, @user.id],
+                     :include => [:project, :tracker, :priority, :assigned_to] unless @user.projects.empty? %>
+
+<%= render :partial => 'common/calendar', :locals => {:calendar => calendar } %>
