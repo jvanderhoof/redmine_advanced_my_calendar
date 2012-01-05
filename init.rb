@@ -1,4 +1,5 @@
 require 'redmine'
+require 'dispatcher'
 
 require 'my_controller_patch'
 
