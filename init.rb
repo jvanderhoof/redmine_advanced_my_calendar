@@ -5,10 +5,10 @@ require 'my_controller_patch'
 Redmine::Plugin.register :redmine_advanced_my_calendar do
   name 'Redmine Advanced My Calendar plugin'
   author 'Jason Vanderhoof'
-  description 'This is a plugin for Redmine'
+  description 'This is a Redmine plugin to filter the calendar on My Page, and provide paging by week.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/jvanderhoof/redmine_advanced_my_calendar'
+  author_url ''
 end
 
 Dispatcher.to_prepare :redmine_advanced_my_calendar do
